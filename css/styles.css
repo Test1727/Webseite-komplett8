@@ -264,9 +264,37 @@ section {
     border: 8px solid rgba(255, 255, 255, 0.8);
 }
 
-/* About Section */
+/* About Section - warm mit Farbformen */
 .about {
-    background-color: linear-gradient(120deg, #fdf8f5 0%, #f0d8e5 100%);
+    background: linear-gradient(120deg, #fdf8f5 0%, #f0d8e5 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Weiche Farbform - warmes Orange/Rosa */
+.about::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 200, 180, 0.25) 0%, rgba(255, 200, 180, 0) 70%);
+    top: -200px;
+    right: -150px;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Zweite Form - kühler Akzent für Kontrast */
+.about::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(180, 200, 240, 0.15) 0%, rgba(180, 200, 240, 0) 70%);
+    bottom: -150px;
+    left: -100px;
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .about-content {
@@ -274,6 +302,8 @@ section {
     grid-template-columns: 3fr 1fr;
     gap: 50px;
     align-items: flex-start;
+    position: relative;
+    z-index: 1; /* Damit Inhalt über den Farbformen liegt */
 }
 
 .about-text p {
@@ -286,7 +316,6 @@ section {
     margin-bottom: 1rem;
 }
 
-
 .about-details ul li {
     margin-bottom: 0.5rem;
     font-size: 1rem;
@@ -295,6 +324,10 @@ section {
 .about-details ul li strong {
     color: var(--primary-color);
 }
+
+
+
+
 
 /* Experience Section - Timeline */
 .experience {
