@@ -459,11 +459,13 @@ section {
     z-index: 3;
 }
 
+
 .hero-brain {
     position: absolute;
-    left: 0;
+    left: -50%;          /* Nach links erweitern */
+    right: -50%;         /* Nach rechts erweitern */
     top: 0;
-    width: 100vw;        /* 100% der Viewport-Breite */
+    width: auto;         /* Automatisch */
     height: 100%;
     transform: rotate(-90deg);
     object-fit: cover;
@@ -471,6 +473,7 @@ section {
     z-index: 0;
     pointer-events: none;
 }
+
 
 
 
