@@ -144,19 +144,19 @@ img {
 
 
 
-/* Sektionsüberschriften mit Hover-Effekt - TEST */
+/* Sektionsüberschriften mit Farbverlauf */
 .section-title {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
     position: relative;
     padding-bottom: 1rem;
-    transition: color 0.3s ease;
-}
-
-.section-title:hover {
-    color: red !important;  /* TEST - ROT */
-    cursor: default;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    width: 100%;
 }
 
 .section-title::after {
@@ -169,13 +169,11 @@ img {
     height: 4px;
     background-color: var(--accent-color);
     border-radius: 2px;
-    transition: background-color 0.3s ease, width 0.3s ease;
 }
 
-.section-title:hover::after {
-    background-color: red !important;  /* TEST - ROT */
-    width: 100px;
-}
+
+
+
 
 
 
@@ -1336,29 +1334,6 @@ html {
 }
 
 
-/* Sektionsüberschriften mit permanentem Farbverlauf wie AK - OHNE HOVER */
-h2.section-title {
-    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    /* Keine Hover-Effekte */
-}
-
-/* Strich unter den Überschriften bleibt wie gehabt */
-h2.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background-color: var(--accent-color);
-    border-radius: 2px;
-    /* Keine Hover-Änderungen */
-}
 
 
 
