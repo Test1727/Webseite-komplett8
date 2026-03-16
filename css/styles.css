@@ -666,6 +666,7 @@ section {
         .hero-brain {
         height: 350% !important;
         min-width: 350% !important;  /* ZUSÄTZLICH zu width: auto */
+   }
 }
 
 /* EXTRA FÜR SEHR GROßE SMARTFONES (z.B. iPhone Plus) */
