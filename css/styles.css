@@ -244,6 +244,10 @@ nav ul li a.active {
 
 main { padding-top: 0 !important; }
 
+section {
+    padding: 60px 0;
+} 
+
 
 /* ========================================
    HERO SECTION
