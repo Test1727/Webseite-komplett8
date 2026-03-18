@@ -868,20 +868,15 @@ section {
 
 
 /* Nachrichten-Box */
-/* Nur diese eine Klasse für den Badge */
 .futuristic-badge {
-    display: inline-block;
     background: linear-gradient(90deg, #00c6ff, #0072ff);
     color: white;
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0, 198, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-weight: bold;
-    white-space: nowrap;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    border-radius: 8px;
+    margin-left: 8px;
+    box-shadow: 0 0 8px rgba(0, 198, 255, 0.7);
 }
-
 
 textarea {
     width: 100%;
@@ -891,7 +886,6 @@ textarea {
     padding: 10px;
     border-radius: 6px;
     outline: none;
-    transition: all 0.3s ease;
 }
 
 textarea:focus {
@@ -901,7 +895,6 @@ textarea:focus {
 
 .encryption-status {
     margin-top: 5px;
-    margin-bottom: 5px;
     font-size: 0.8rem;
     color: #00ffcc;
     display: flex;
@@ -915,20 +908,22 @@ textarea:focus {
     background: #00ffcc;
     border-radius: 50%;
     animation: pulse 1s infinite;
-    box-shadow: 0 0 5px #00ffcc;
 }
 
 .faux-percentage {
     margin-left: auto;
     color: #66ccff;
-    font-family: monospace;
 }
 
 @keyframes pulse {
-    0% { opacity: 0.3; transform: scale(0.9); }
-    50% { opacity: 1; transform: scale(1.1); }
-    100% { opacity: 0.3; transform: scale(0.9); }
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
 }
+
+
+
+
 
 /* Responsive Anpassungen */
 @media (max-width: 768px) {
