@@ -1015,23 +1015,6 @@ textarea::placeholder {
 
 
 
-
-
-/* Responsive Anpassungen */
-@media (max-width: 768px) {
-    .encryption-status {
-        flex-wrap: wrap;
-    }
-    
-    .faux-percentage {
-        margin-left: 0;
-        width: 100%;
-    }
-}
-
-
-
-
 /* ========================================
    FOOTER
    ======================================== */
