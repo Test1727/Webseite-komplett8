@@ -464,6 +464,17 @@ section {
     padding-top: 0rem !important;
 }
 
+/* Abstände Interessen */
+
+.detail-item h3 + ul {
+    margin-top: 0;
+}
+
+.interests-heading {
+    margin-top: 35px;
+}
+
+
 /* ========================================
    EXPERIENCE SECTION
    ======================================== */
