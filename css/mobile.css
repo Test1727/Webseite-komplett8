@@ -309,6 +309,17 @@ nav ul li a {
 
 /* Anpassungen Kontaktformular */
 
+          .contact-layout {
+                    flex-direction: column;
+                }
+                
+                .contact-left-column,
+                .contact-right-column {
+                    padding-right: 0;
+                    width: 100%;
+                }
+    
+
     .encryption-status {
         flex-wrap: wrap;
     }
@@ -317,6 +328,8 @@ nav ul li a {
         margin-left: 0;
         width: 100%;
     }
+
+
 }
 
 
