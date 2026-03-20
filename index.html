@@ -912,9 +912,7 @@
 
 
 
-
-
-    <!-- SCROLL-FUNKTIONALITÄT FÜR MENÜ (OPTIMIERT) -->
+<!-- SCROLL-FUNKTIONALITÄT FÜR MENÜ (KORRIGIERT) -->
 <script>
 // Warten bis das DOM vollständig geladen ist
 document.addEventListener('DOMContentLoaded', function() {
@@ -922,144 +920,115 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('nav ul li a');
     const header = document.querySelector('header');
     
-    // Verhindert mehrfache gleichzeitige Scroll-Vorgänge
-    let isScrolling = false;
-    
-    // Funktion zum sanften Scrollen mit korrektem Offset
-    function smoothScrollToSection(targetId) {
-        // Wenn gerade gescrollt wird, abbrechen
-        if (isScrolling) return false;
-        
+    // Funktion zum Scrollen zu einer Sektion
+    function scrollToSection(targetId) {
         const targetSection = document.querySelector(targetId);
-        if (targetSection) {
-            isScrolling = true;
-            
-            // Header-Höhe dynamisch berechnen
-            const headerHeight = header ? header.offsetHeight : 70;
-            
-            // Position des Zielelements berechnen
-            const targetRect = targetSection.getBoundingClientRect();
-            const absoluteTargetTop = targetRect.top + window.pageYOffset;
-            
-            // Scroll-Position mit Header-Offset anpassen
-            const offsetPosition = absoluteTargetTop - headerHeight;
-            
-            // Sanft scrollen
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-            
-            // Scrolling-Flag nach Animation zurücksetzen
-            setTimeout(() => {
-                isScrolling = false;
-            }, 1000);
-            
-            return true;
-        }
-        return false;
+        if (!targetSection) return false;
+        
+        // Header-Höhe berechnen
+        const headerHeight = header ? header.offsetHeight : 70;
+        
+        // Position der Sektion berechnen
+        const elementPosition = targetSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+        
+        // Sofortiges Scrollen ohne smooth (für präzise Positionierung)
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+        
+        return true;
     }
     
     // Event-Listener für alle Navigationslinks
     if (navLinks.length > 0) {
         navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
+            // Entfernen vorhandener Event-Listener (falls vorhanden)
+            const newLink = link.cloneNode(true);
+            link.parentNode.replaceChild(newLink, link);
+            
+            newLink.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
                 
                 // Nur für interne Anker-Links
                 if (href && href.startsWith('#')) {
                     e.preventDefault();
-                    e.stopPropagation(); // Verhindert Event-Bubbling
+                    e.stopPropagation();
                     
-                    const targetId = href;
-                    const success = smoothScrollToSection(targetId);
+                    // Direkt zur Sektion scrollen
+                    scrollToSection(href);
                     
-                    if (success) {
-                        // URL aktualisieren ohne zu springen
-                        if (history.pushState) {
-                            history.pushState(null, null, href);
-                        }
-                        
-                        // Aktiven Menüpunkt markieren
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        this.classList.add('active');
+                    // URL aktualisieren
+                    if (history.pushState) {
+                        history.pushState(null, null, href);
                     }
+                    
+                    // Aktiven Menüpunkt markieren
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    return false;
                 }
             });
         });
     }
     
-    // Bei Seitenladung mit Hash korrekt scrollen
+    // Bei Seitenladung mit Hash
     if (window.location.hash) {
-        setTimeout(() => {
-            smoothScrollToSection(window.location.hash);
-        }, 150);
+        // Kurze Verzögerung für sauberes Laden
+        setTimeout(function() {
+            scrollToSection(window.location.hash);
+        }, 100);
     }
     
-    // Aktiven Menüpunkt beim Scrollen aktualisieren (ohne Intersection Observer)
+    // Aktiven Menüpunkt beim Scrollen aktualisieren
     const sections = document.querySelectorAll('section[id]');
     
-    if (sections.length > 0 && navLinks.length > 0) {
-        function updateActiveSection() {
-            const scrollPosition = window.scrollY;
-            const headerHeight = header ? header.offsetHeight : 70;
+    function updateActiveSection() {
+        const scrollPosition = window.scrollY;
+        const headerHeight = header ? header.offsetHeight : 70;
+        
+        let currentSection = '';
+        
+        for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
+            const sectionTop = section.offsetTop - headerHeight;
+            const sectionBottom = sectionTop + section.offsetHeight;
             
-            let currentSection = '';
-            
-            // Durch alle Sections gehen und die aktive finden
-            for (let i = 0; i < sections.length; i++) {
-                const section = sections[i];
-                const sectionTop = section.offsetTop - headerHeight - 50;
-                const sectionBottom = sectionTop + section.offsetHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                    currentSection = section.getAttribute('id');
-                    break;
-                }
+            if (scrollPosition >= sectionTop - 50 && scrollPosition < sectionBottom) {
+                currentSection = section.getAttribute('id');
+                break;
             }
-            
-            // Wenn keine Section aktiv ist, die erste nehmen (Hero)
-            if (!currentSection && sections.length > 0) {
-                currentSection = sections[0].getAttribute('id');
-            }
-            
-            // Aktiven Menüpunkt setzen
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                const href = link.getAttribute('href');
-                if (href === `#${currentSection}`) {
-                    link.classList.add('active');
-                }
-            });
         }
         
-        // Scroll-Event mit Debouncing
-        let scrollTimeout;
-        window.addEventListener('scroll', function() {
-            if (scrollTimeout) {
-                clearTimeout(scrollTimeout);
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === `#${currentSection}`) {
+                link.classList.add('active');
             }
-            scrollTimeout = setTimeout(updateActiveSection, 50);
         });
-        
-        // Initial ausführen
-        setTimeout(updateActiveSection, 100);
     }
     
-    // Verhindert automatisches Springen beim Laden
-    if (window.location.hash) {
-        const originalHash = window.location.hash;
-        window.location.hash = '';
-        setTimeout(() => {
-            if (history.replaceState) {
-                history.replaceState(null, null, originalHash);
-            }
-        }, 10);
-    }
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveSection, 50);
+    });
+    
+    updateActiveSection();
 });
 </script>
+
+
+
+    
+
+
+  
 
 
 
