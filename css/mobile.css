@@ -231,26 +231,50 @@ nav ul li a {
         hyphens: auto;
     }
 
-   /* === FILMSTREIFEN ANPASSUNGEN === */
+
+
+/* === MEDIA QUERY FÜR 768PX (SMARTPHONE/TABLET) === */
+    
+    /* === FILMSTREIFEN ANPASSUNGEN === */
     .projects-carousel {
-        padding: 20px 0 20px 0;  /* Weniger Padding oben/unten */
+        padding: 20px 0 20px 0;
     }
     
+    /* WICHTIG: Container für 1 Slide konfigurieren */
+    .projects-carousel .carousel-container {
+        margin: 0 10px;
+        gap: 0;
+    }
+    
+    /* Jeder Slide nimmt die volle Breite - 1 Slide sichtbar */
+    .carousel-slide {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        min-width: 100% !important;
+        border-right: none !important; /* Border entfernen bei mobile */
+    }
+    
+    /* Optionale: Leichte Trennung zwischen Slides */
+    .carousel-slide:not(:last-child) {
+        margin-right: 0;
+    }
+    
+    /* Projekt-Cards Höhe anpassen */
     .project-card-carousel {
-        height: 400px;  /* Reduzierte Höhe für Smartphone */
+        height: 400px;
         min-height: 400px;
     }
     
     .carousel-image {
-        height: 140px;  /* Kleinere Bilder */
+        height: 140px;
     }
     
     .carousel-header {
-        padding: 0.6rem;  /* Weniger Padding */
+        padding: 0.6rem;
     }
     
     .carousel-header h3 {
-        font-size: 0.9rem;  /* Kleinere Schrift */
+        font-size: 0.9rem;
         margin-bottom: 0.2rem;
     }
     
@@ -264,7 +288,7 @@ nav ul li a {
     }
     
     .carousel-body li {
-        font-size: 0.7rem;  /* Kleinere Schrift */
+        font-size: 0.7rem;
         margin-bottom: 0.3rem;
         padding-left: 1rem;
     }
@@ -275,60 +299,88 @@ nav ul li a {
     }
     
     .carousel-tag {
-        font-size: 0.55rem;  /* Kleinere Tags */
+        font-size: 0.55rem;
         padding: 0.1rem 0.4rem;
     }
-
-    /* Container breiter machen durch weniger Margin */
-    .projects-carousel .carousel-container {
-        margin: 0 10px;  /* Weniger Margin außen */
-    }
     
-    
-    /* Navigation Buttons etwas kleiner */
+    /* Navigation Buttons - kompakter */
     .carousel-button {
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         font-size: 0.9rem;
     }
-
-        .carousel-button.prev {
-        left: 5px;  /* Näher am Rand */
-    }
-
-        .carousel-button.next {
-        right: 5px;  /* Näher am Rand */
+    
+    .carousel-button.prev {
+        left: 5px;
     }
     
+    .carousel-button.next {
+        right: 5px;
+    }
     
-    /* Dots etwas kleiner */
+    /* Dots kompakter */
     .carousel-dots {
-        gap: 6px;
-        margin-top: 10px;
+        gap: 8px;
+        margin-top: 12px;
     }
     
     .carousel-dot {
         width: 8px;
         height: 8px;
     }
+    
+    /* Filmstreifen-Dekoration für mobile */
+    .safety-film-left, 
+    .safety-film-right {
+        display: none;  /* Seitliche SAFETY FILM ausblenden */
+    }
+    
+    .safety-film-center {
+        display: block;  /* Nur mittleren anzeigen */
+        font-size: 8px;
+        bottom: 12px;
+        opacity: 0.5;
+    }
+    
+    /* Kodak-Schriftzug verkleinern */
+    .projects-carousel .carousel-container::before {
+        font-size: 9px;
+        top: -12px;
+        letter-spacing: 1px;
+    }
+    
+    /* Perforation anpassen */
+    .projects-carousel::before,
+    .projects-carousel::after {
+        height: 12px;
+        background: repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 12px,
+            rgba(192, 168, 123, 0.8) 12px,
+            rgba(192, 168, 123, 0.8) 18px
+        );
+    }
 
-    .carousel-slide {
-    width: 100% !important;  /* Jeder Slide nimmt die volle Breite */
-    flex: 0 0 auto;
-}
-       
-            
-            .safety-film-left, 
-            .safety-film-right {
-                display: none;
-            }
-            
-            .safety-film-center {
-                display: block;
-                font-size: 8px;
-                opacity: 0.3;
-            }
 
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
 /* Anpassungen Kontaktformular */
 
           .contact-layout {
