@@ -142,13 +142,17 @@
     }
     
     .hero-buttons {
+       display: flex;
+        gap: 20px;    
         justify-content: center;
     }
     
     .hero-buttons .btn {
-        padding: 10px 25px;
-        font-size: 1rem;
-        min-width: 160px;
+       flex: 1;                 /* Beide gleich breit, passen sich an */
+    min-width: 160px;        /* Mindestbreite, damit sie nicht zu klein werden */
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-align: center;
     }
     
     .hero-image {
