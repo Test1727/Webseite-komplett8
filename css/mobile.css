@@ -59,6 +59,10 @@
         font-size: 0.8rem;
         padding: 5px 12px;
     }
+
+   .language-selector select {
+    padding-right: 24px !important;  /* Mehr Platz für Pfeil (von 24px auf 28px) */
+}
     
     /* === HERO SECTION === */
     .hero {
