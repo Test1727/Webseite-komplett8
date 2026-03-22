@@ -1474,12 +1474,7 @@ label[for="contact-message"] {
     font-weight: 500 !important;
     margin-bottom: 10px !important;
    box-sizing: border-box !important;
-   width: 100% !important;
-      /* === NEU: Für einzeilige Darstellung === */
-    white-space: nowrap !important;      /* Verhindert Zeilenumbruch */
-    overflow-x: auto !important;         /* Scrollbar bei Überlauf */
-    overflow-y: hidden !important;
-    text-overflow: clip !important;      /* Kein "..." bei Überlauf */
+   width: 100% !important;     
 }
 
 .captcha-hint {
