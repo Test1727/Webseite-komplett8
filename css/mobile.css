@@ -1026,6 +1026,19 @@
     }
     
     /* === HERO SECTION === */
+       .hero {
+        min-height: auto !important;
+        padding-top: 60px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    .hero .container {
+        gap: 20px !important;
+        padding-top: 0 !important;
+    }
+
+
+   
     .hero-content h1 {
         font-size: 1.8rem;
     }
