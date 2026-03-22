@@ -501,6 +501,15 @@
         margin-top: 0.75rem !important;
         font-size: 1rem;
     }
+
+    .section-title {
+            font-size: 1.5rem !important;   /* Noch kleiner für kleine Smartphones */
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .section-title::after {
+            width: 50px !important;
+        }
     
     /* Filmstreifen */
     .project-card-carousel {
