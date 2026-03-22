@@ -179,6 +179,14 @@
         width: 60px !important;             /* Kürzere Unterstreichung */
         height: 3px !important;             /* Dünnere Linie */
     }
+
+
+        /* ===== ABOUT SECTION - EINLEITUNGSSATZ ANPASSEN ===== */
+    .about-text p[style*="font-size: 1.25rem"] {
+        font-size: 1.1rem !important;      /* Von 1.25rem auf 1.1rem reduziert */
+        margin-bottom: 1.2rem !important;  /* Abstand anpassen */
+        line-height: 1.4 !important;       /* Bessere Lesbarkeit auf Smartphones */
+    }
     
 
     /* Hero Section */
