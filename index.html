@@ -724,12 +724,7 @@
 
 
 
-
-
-
-
-
-                                    <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     const textarea = document.getElementById("contact-message");
     const languageSwitch = document.getElementById("language-switch");
@@ -738,7 +733,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentLang = document.documentElement.lang || 'de';
         let index = 0;
 
-        // Die rotierenden Texte direkt im Script (übersetzt)
         const messages = {
             de: [
                 "🧠 Initialisiere Quantenkanal...",
@@ -757,16 +751,14 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         function updatePlaceholder() {
-            if (document.activeElement !== textarea && textarea.value === "") {
-                textarea.placeholder = messages[currentLang][index % messages[currentLang].length];
-                index++;
-            }
+            // Entferne die Bedingung temporär zum Testen
+            textarea.placeholder = messages[currentLang][index % messages[currentLang].length];
+            index++;
         }
 
-        // Rotation starten
+        // Alle 3 Sekunden rotieren (auch wenn Feld fokussiert ist)
         setInterval(updatePlaceholder, 3000);
         
-        // Bei Sprachwechsel
         if (languageSwitch) {
             languageSwitch.addEventListener('change', function(e) {
                 currentLang = e.target.value;
@@ -775,11 +767,16 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Initial setzen
         updatePlaceholder();
     }
 });
 </script>
+
+
+                                    
+
+
+
 
 
 
