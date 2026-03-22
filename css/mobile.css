@@ -1037,26 +1037,45 @@
         padding-top: 0 !important;
     }
 
-
-   
+       .hero-content {
+        margin-top: 0 !important;
+    }
+    
     .hero-content h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem !important;
+        margin-bottom: 0.3rem !important;
     }
     
     .hero-content h2 {
-        font-size: 1.1rem;
+        font-size: 1rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+
+       .hero-content p {
+        font-size: 0.9rem !important;
+        margin-bottom: 1rem !important;
     }
     
-    .profile-image {
-        width: 140px !important;
-        height: 140px !important;
+    .hero-buttons {
+        margin-top: 15px !important;
+        gap: 10px !important;
     }
     
     .hero-buttons .btn {
-        min-width: 160px;
-        padding: 8px 16px;
-        font-size: 0.9rem;
+        min-width: 140px !important;
+        padding: 6px 12px !important;
+        font-size: 0.85rem !important;
     }
+    
+    .profile-image {
+        width: 120px !important;
+        height: 120px !important;
+    }
+   
+
+
+ 
     
     /* === ABOUT SECTION === */
     .about-text p[style*="font-size: 1.25rem"] {
