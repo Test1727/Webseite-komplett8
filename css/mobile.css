@@ -28,6 +28,8 @@
         overflow-x: hidden !important;
         width: 100% !important;
         /*scroll-padding-top: 110px;*/
+       scroll-padding-top: clamp(70px, 8vh, 90px) !important;
+        /* 70px bei schmalem Fenster, 90px bei breitem */      
     }
     
     
@@ -533,6 +535,11 @@
     p {
         font-size: 0.95rem;
         line-height: 1.5;
+    }
+
+   html {
+        scroll-padding-top: clamp(90px, 12vh, 120px) !important;
+        /* Passt sich der Höhe des Headers an */
     }
     
     /* === SECTIONS KOMPAKTER === */
