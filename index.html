@@ -1032,19 +1032,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
 <script>
 (function() {
-    // Scroll-Funktion für Menü-Klicks
     document.querySelectorAll('nav a').forEach(function(link) {
         link.addEventListener('click', function(e) {
-            var targetId = this.getAttribute('href');
-            if (targetId && targetId !== '#' && targetId !== '#contact') {
+            var href = this.getAttribute('href');
+            
+            // Nur interne Links (#...)
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
-                var target = document.querySelector(targetId);
+                
+                var target = document.querySelector(href);
+                
                 if (target) {
                     var header = document.querySelector('header');
                     var headerHeight = header ? header.offsetHeight : 70;
                     var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -1055,6 +1060,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })();
 </script>
+
+
 
 
 
