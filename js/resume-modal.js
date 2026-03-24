@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
             wrapper.appendChild(shredContainer);
             
             // Schnipsel erzeugen (wie zerrissene Papierstücke)
-            const shredCount = 32; // Mehr Schnipsel für dynamischeren Effekt
+            const shredCount = 64; // Mehr Schnipsel für dynamischeren Effekt
             const shreds = [];
             
             // Bild laden für Schnipsel
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     shred.style.clipPath = randomShape;
                     shred.style.transformOrigin = 'center center';
                     shred.style.transform = `rotate(${initialRotation}deg)`;
-                    shred.style.transition = 'all 5.0s cubic-bezier(0.3, 0.8, 0.4, 1.1)';
+                    shred.style.transition = 'all 20.0s cubic-bezier(0.3, 0.8, 0.4, 1.1)';
                     
                     // Zufällige Flugrichtung und Rotation
                     const angle = Math.random() * Math.PI * 2;
