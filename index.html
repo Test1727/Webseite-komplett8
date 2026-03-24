@@ -1083,7 +1083,9 @@ function setHeroHeight() {
         // Profilbild dynamisch skalieren
         const profileImage = document.querySelector('.profile-image');
         if (profileImage) {
-            const newSize = Math.min(220, windowWidth * 0.4);
+            // Bildgröße von BEIDEN abhängig machen
+            const newSize = Math.min(220, width * 0.35, height * 0.35);
+            //const newSize = Math.min(220, windowWidth * 0.4);
             profileImage.style.width = newSize + 'px';
             profileImage.style.height = newSize + 'px';
         }
