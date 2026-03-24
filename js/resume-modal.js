@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Platzhalter nach Zerfall anzeigen mit animierten Partikeln
+    // Platzhalter nach Zerfall anzeigen mit glitzernden Sternen
     function showPlaceholder(container) {
         container.innerHTML = '';
         
@@ -301,9 +301,8 @@ document.addEventListener('DOMContentLoaded', function() {
         placeholder.style.position = 'relative';
         placeholder.style.padding = '3rem 2rem';
         placeholder.style.textAlign = 'center';
-        placeholder.style.backgroundColor = '#f8f9fa';
+        placeholder.style.backgroundColor = '#0a3d62';
         placeholder.style.borderRadius = '12px';
-        placeholder.style.border = '2px dashed #0a3d62';
         placeholder.style.margin = '1rem';
         placeholder.style.overflow = 'hidden';
         placeholder.style.minHeight = '400px';
@@ -313,27 +312,27 @@ document.addEventListener('DOMContentLoaded', function() {
         placeholder.style.alignItems = 'center';
         placeholder.style.animation = 'fadeIn 0.5s ease';
         
-        // Canvas für Partikel-Hintergrund
-        const canvas = document.createElement('canvas');
-        canvas.style.position = 'absolute';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        canvas.style.zIndex = '0';
-        canvas.style.pointerEvents = 'none';
-        placeholder.appendChild(canvas);
+        // Cyan-Linie oben (wie unter Header)
+        const cyanLine = document.createElement('div');
+        cyanLine.style.position = 'absolute';
+        cyanLine.style.top = '0';
+        cyanLine.style.left = '0';
+        cyanLine.style.width = '100%';
+        cyanLine.style.height = '3px';
+        cyanLine.style.backgroundColor = '#00ffff';
+        cyanLine.style.boxShadow = '0 0 8px rgba(0,255,255,0.6)';
+        placeholder.appendChild(cyanLine);
         
-        // Inhalt (über dem Canvas)
+        // Inhalt
         const content = document.createElement('div');
         content.style.position = 'relative';
-        content.style.zIndex = '1';
+        content.style.zIndex = '2';
         content.style.padding = '2rem';
         
         content.innerHTML = `
-            <div style="font-size: 5rem; margin-bottom: 1.5rem; filter: drop-shadow(0 0 8px rgba(0,255,255,0.3));">🔒</div>
-            <h3 style="color: #0a3d62; margin-bottom: 1rem; font-size: 1.5rem;">Zugriff eingeschränkt.</h3>
-            <p style="color: #555; font-size: 1rem; max-width: 350px; margin: 0 auto; line-height: 1.6;">
+            <div style="font-size: 5rem; margin-bottom: 1.5rem; filter: drop-shadow(0 0 12px rgba(0,255,255,0.6));">🔒</div>
+            <h3 style="color: white; margin-bottom: 1rem; font-size: 1.5rem;">Zugriff eingeschränkt.</h3>
+            <p style="color: white; font-size: 1rem; max-width: 350px; margin: 0 auto; line-height: 1.6;">
                 Relevante Informationen werden kontextbasiert bereitgestellt.
             </p>
         `;
@@ -341,89 +340,67 @@ document.addEventListener('DOMContentLoaded', function() {
         placeholder.appendChild(content);
         container.appendChild(placeholder);
         
-        // Partikel-Animation
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let animationId = null;
-        let width = 0, height = 0;
+        // Glitzer-Effekt (funkelnde Sterne an zufälligen Positionen)
+        const glitzerContainer = document.createElement('div');
+        glitzerContainer.style.position = 'absolute';
+        glitzerContainer.style.top = '0';
+        glitzerContainer.style.left = '0';
+        glitzerContainer.style.width = '100%';
+        glitzerContainer.style.height = '100%';
+        glitzerContainer.style.pointerEvents = 'none';
+        glitzerContainer.style.zIndex = '1';
+        placeholder.appendChild(glitzerContainer);
         
-        function resizeCanvas() {
-            const rect = placeholder.getBoundingClientRect();
-            width = rect.width;
-            height = rect.height;
-            canvas.width = width;
-            canvas.height = height;
+        // Verschiedene Glitzer-Formen
+        const glitzerShapes = ['✦', '✧', '❇️', '✶', '✴️', '✨', '⭐'];
+        
+        function createGlitzer() {
+            const glitzer = document.createElement('div');
+            const randomShape = glitzerShapes[Math.floor(Math.random() * glitzerShapes.length)];
+            const size = 16 + Math.random() * 16;
+            const posX = Math.random() * (placeholder.clientWidth - 50);
+            const posY = Math.random() * (placeholder.clientHeight - 50);
+            
+            glitzer.innerHTML = randomShape;
+            glitzer.style.position = 'absolute';
+            glitzer.style.left = posX + 'px';
+            glitzer.style.top = posY + 'px';
+            glitzer.style.fontSize = size + 'px';
+            glitzer.style.color = '#00ffff';
+            glitzer.style.textShadow = `0 0 ${8 + Math.random() * 12}px rgba(0,255,255,0.8)`;
+            glitzer.style.opacity = '0';
+            glitzer.style.transition = 'opacity 0.3s ease';
+            glitzer.style.pointerEvents = 'none';
+            
+            glitzerContainer.appendChild(glitzer);
+            
+            // Einblenden
+            setTimeout(() => {
+                glitzer.style.opacity = 0.4 + Math.random() * 0.5;
+                
+                // Ausblenden und entfernen
+                setTimeout(() => {
+                    glitzer.style.opacity = '0';
+                    setTimeout(() => {
+                        glitzer.remove();
+                    }, 300);
+                }, 400 + Math.random() * 600);
+            }, 50);
         }
         
-        function createParticles() {
-            const particleCount = 80;
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    radius: 2 + Math.random() * 4,
-                    speedX: (Math.random() - 0.5) * 0.5,
-                    speedY: (Math.random() - 0.5) * 0.3 + 0.2,
-                    opacity: 0.3 + Math.random() * 0.5,
-                    color: `rgba(0, 255, 255, ${0.4 + Math.random() * 0.4})`
-                });
+        // Regelmäßig neue Glitzer erstellen
+        let glitzerInterval = setInterval(() => {
+            if (placeholder.isConnected) {
+                createGlitzer();
+            } else {
+                clearInterval(glitzerInterval);
             }
-        }
-        
-        function drawParticles() {
-            if (!ctx) return;
-            ctx.clearRect(0, 0, width, height);
-            
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.fill();
-                
-                // Kleinen Glow-Effekt
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = '#00ffff';
-                ctx.fill();
-                ctx.shadowBlur = 0;
-                
-                // Bewegung
-                p.x += p.speedX;
-                p.y += p.speedY;
-                
-                // Reset wenn aus dem Bild
-                if (p.x < -20) p.x = width + 20;
-                if (p.x > width + 20) p.x = -20;
-                if (p.y < -20) p.y = height + 20;
-                if (p.y > height + 20) p.y = -20;
-            });
-            
-            animationId = requestAnimationFrame(drawParticles);
-        }
-        
-        function initParticles() {
-            resizeCanvas();
-            createParticles();
-            drawParticles();
-        }
-        
-        // Bei Größenänderung neu skalieren
-        const resizeObserver = new ResizeObserver(() => {
-            resizeCanvas();
-            createParticles();
-        });
-        resizeObserver.observe(placeholder);
-        
-        initParticles();
+        }, 300);
         
         // Animation stoppen wenn Modal geschlossen wird
         const modalElement = document.getElementById('resume-modal');
         const closeModalHandler = function() {
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-                animationId = null;
-            }
-            resizeObserver.disconnect();
+            clearInterval(glitzerInterval);
         };
         
         // Event-Listener für Modal-Schließen
