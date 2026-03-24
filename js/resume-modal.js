@@ -292,72 +292,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Platzhalter nach Zerfall anzeigen mit glitzernden Sternen
+    // Platzhalter nach Zerfall anzeigen mit glitzernden Sternen (nur Cyan)
     function showPlaceholder(container) {
         container.innerHTML = '';
         
         // Container für den Platzhalter
         const placeholder = document.createElement('div');
-        placeholder.style.position = 'relative';
-        placeholder.style.padding = '3rem 2rem';
-        placeholder.style.textAlign = 'center';
-        placeholder.style.backgroundColor = '#0a3d62';
-        placeholder.style.borderRadius = '12px';
-        placeholder.style.margin = '1rem';
-        placeholder.style.overflow = 'hidden';
-        placeholder.style.minHeight = '400px';
-        placeholder.style.display = 'flex';
-        placeholder.style.flexDirection = 'column';
-        placeholder.style.justifyContent = 'center';
-        placeholder.style.alignItems = 'center';
-        placeholder.style.animation = 'fadeIn 0.5s ease';
+        placeholder.className = 'placeholder-container';
         
-        // Cyan-Linie oben (wie unter Header)
-        const cyanLine = document.createElement('div');
-        cyanLine.style.position = 'absolute';
-        cyanLine.style.top = '0';
-        cyanLine.style.left = '0';
-        cyanLine.style.width = '100%';
-        cyanLine.style.height = '3px';
-        cyanLine.style.backgroundColor = '#00ffff';
-        cyanLine.style.boxShadow = '0 0 8px rgba(0,255,255,0.6)';
-        placeholder.appendChild(cyanLine);
-        
-        // Inhalt
+        // Inhalt (mit CSS-Klassen)
         const content = document.createElement('div');
-        content.style.position = 'relative';
-        content.style.zIndex = '2';
-        content.style.padding = '2rem';
+        content.className = 'placeholder-content';
         
         content.innerHTML = `
-            <div style="font-size: 5rem; margin-bottom: 1.5rem; filter: drop-shadow(0 0 12px rgba(0,255,255,0.6));">🔒</div>
-            <h3 style="color: white; margin-bottom: 1rem; font-size: 1.5rem;">Zugriff eingeschränkt.</h3>
-            <p style="color: white; font-size: 1rem; max-width: 350px; margin: 0 auto; line-height: 1.6;">
-                Relevante Informationen werden kontextbasiert bereitgestellt.
-            </p>
+            <div class="lock-icon">🔒</div>
+            <h3>Zugriff eingeschränkt.</h3>
+            <p>Relevante Informationen werden kontextbasiert bereitgestellt.</p>
         `;
         
         placeholder.appendChild(content);
         container.appendChild(placeholder);
         
-        // Glitzer-Effekt (funkelnde Sterne an zufälligen Positionen)
+        // Glitzer-Effekt (funkelnde Sterne in Cyan)
         const glitzerContainer = document.createElement('div');
-        glitzerContainer.style.position = 'absolute';
-        glitzerContainer.style.top = '0';
-        glitzerContainer.style.left = '0';
-        glitzerContainer.style.width = '100%';
-        glitzerContainer.style.height = '100%';
-        glitzerContainer.style.pointerEvents = 'none';
-        glitzerContainer.style.zIndex = '1';
+        glitzerContainer.className = 'glitzer-container';
         placeholder.appendChild(glitzerContainer);
         
-        // Verschiedene Glitzer-Formen
         const glitzerShapes = ['✦', '✧', '❇️', '✶', '✴️', '✨', '⭐'];
         
         function createGlitzer() {
             const glitzer = document.createElement('div');
             const randomShape = glitzerShapes[Math.floor(Math.random() * glitzerShapes.length)];
-            const size = 16 + Math.random() * 16;
+            const size = 14 + Math.random() * 18;
             const posX = Math.random() * (placeholder.clientWidth - 50);
             const posY = Math.random() * (placeholder.clientHeight - 50);
             
@@ -367,18 +333,15 @@ document.addEventListener('DOMContentLoaded', function() {
             glitzer.style.top = posY + 'px';
             glitzer.style.fontSize = size + 'px';
             glitzer.style.color = '#00ffff';
-            glitzer.style.textShadow = `0 0 ${8 + Math.random() * 12}px rgba(0,255,255,0.8)`;
+            glitzer.style.textShadow = `0 0 ${6 + Math.random() * 10}px rgba(0,255,255,0.9)`;
             glitzer.style.opacity = '0';
             glitzer.style.transition = 'opacity 0.3s ease';
             glitzer.style.pointerEvents = 'none';
             
             glitzerContainer.appendChild(glitzer);
             
-            // Einblenden
             setTimeout(() => {
-                glitzer.style.opacity = 0.4 + Math.random() * 0.5;
-                
-                // Ausblenden und entfernen
+                glitzer.style.opacity = 0.5 + Math.random() * 0.5;
                 setTimeout(() => {
                     glitzer.style.opacity = '0';
                     setTimeout(() => {
@@ -388,14 +351,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 50);
         }
         
-        // Regelmäßig neue Glitzer erstellen
         let glitzerInterval = setInterval(() => {
             if (placeholder.isConnected) {
                 createGlitzer();
             } else {
                 clearInterval(glitzerInterval);
             }
-        }, 300);
+        }, 350);
         
         // Animation stoppen wenn Modal geschlossen wird
         const modalElement = document.getElementById('resume-modal');
@@ -403,7 +365,6 @@ document.addEventListener('DOMContentLoaded', function() {
             clearInterval(glitzerInterval);
         };
         
-        // Event-Listener für Modal-Schließen
         const modalCloseBtn = document.querySelector('.close-modal');
         if (modalCloseBtn) {
             modalCloseBtn.addEventListener('click', closeModalHandler);
