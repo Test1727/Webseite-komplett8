@@ -156,19 +156,29 @@
 .placeholder-container {
     position: relative;
     min-height: 400px;
-    background: linear-gradient(
-        to right,
-        #e8e0d0 0%,
-        #e8e0d0 33.33%,
-        #f5f5f5 33.33%,
-        #f5f5f5 100%
-    );
+    background-color: #f5f5f5; /* rechte Seite */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.5s ease;
+    overflow: hidden;
 }
+
+.placeholder-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33.33%;
+    height: 100%;
+    background-color: #e8e0d0; /* beige */
+    z-index: 0;
+}
+
+
+
+
 
 
 
