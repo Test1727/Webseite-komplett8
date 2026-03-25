@@ -936,7 +936,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
 
-<!-- Menüpunkt Farbe ändern bei Klick/Scroll -->
+<!-- Menüpunkt Farbe ändern bei Klick/Scroll nur mit CSS geht das nicht da ständig berechnet werden muß welcher Bereich im Display sichtbar ist -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('nav ul li a');
@@ -1005,18 +1005,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-
-
-
-
-    
-
-
-
-
 <!-- Damit wird auf Tablet und Desktop die erste Seite immer korrekt angezeigt egal wie die Fenstergröße ist -->
     <script>
 function setHeroHeight() {
@@ -1081,15 +1069,6 @@ window.addEventListener('resize', setHeroHeight);
 window.addEventListener('load', setHeroHeight);
 setHeroHeight();
 </script>
-
-
-
-    
-
-
-
-
-
 
 
     
