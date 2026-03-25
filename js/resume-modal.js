@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
 placeholder.style.minHeight = '100%';
         
         content.innerHTML = `
-            <div class="lock-icon">🔒</div>
+            <i class="fas fa-lock"></i> 
             <h3>Zugriff eingeschränkt.</h3>
             <p>Relevante Informationen werden kontextbasiert bereitgestellt.</p>
         `;
