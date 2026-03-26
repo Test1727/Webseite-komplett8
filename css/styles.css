@@ -833,10 +833,10 @@ section {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.skill-tile:hover {
+/* .skill-tile:hover {
     transform: translateY(-5px);
     background-color: var(--primary-color);
-}
+}*/
 
 /* ========================================
    PROJECTS SECTION
