@@ -695,7 +695,8 @@ section {
 }
 
 .skill-item {
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
+    background-color: #0a2463;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -723,7 +724,8 @@ section {
 .skill-percentage {
     font-size: 15px;
     font-weight: 500;
-    color: var(--primary-color);
+    color: #ffffff;
+    /*color: var(--primary-color);*/
 }
 
 .progress-bar-container {
