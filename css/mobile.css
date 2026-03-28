@@ -481,7 +481,8 @@
         margin-top: -80px !important;
         background-color: transparent !important;
         position: relative !important;
-        overflow: visible !important;
+            overflow: hidden !important;
+        min-height: 100vh !important;
     }
     
     /* Gehirn-Bild weniger milchig */
