@@ -480,12 +480,13 @@
    HOCHFORMAT FÜR TABLETS UND GROSSE GERÄTE
    ======================================== */
     @media (orientation: portrait) and (min-width: 769px) {
+        @media (orientation: portrait) and (min-width: 769px) {
     .hero {
         background-color: #0f2a4a !important;
         background-image: none !important;
         position: relative !important;
         overflow: hidden !important;
-        height: 100vh !important; /* Genau die Bildschirmhöhe */
+        height: 100dvh !important; /* Dynamische Viewport-Höhe */
         min-height: 0 !important;
         display: flex !important;
         align-items: center !important;
@@ -523,6 +524,10 @@
         height: 220px !important;
     }
 }
+
+
+
+
 
 
 
