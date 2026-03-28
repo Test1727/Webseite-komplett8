@@ -496,7 +496,8 @@
         width: 200% !important;
         height: 200% !important;
         object-fit: cover !important;
-        transform: rotate(-90deg) !important;
+    transform: rotate(-90deg) scale(1.8) !important;
+        /* transform: rotate(-90deg) !important;*/
         opacity: 0.6 !important;
         z-index: 1 !important;
         pointer-events: none !important;
