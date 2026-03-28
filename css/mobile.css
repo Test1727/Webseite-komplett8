@@ -481,6 +481,7 @@
    ======================================== */
 
 @media (orientation: portrait) and (min-width: 769px) {
+    @media (orientation: portrait) and (min-width: 769px) {
     .hero {
         position: relative !important;
         overflow: hidden !important;
@@ -488,7 +489,7 @@
         background-color: transparent !important;
     }
     
-    /* Gehirn-Bild als separates Element, gedreht und füllend */
+    /* Gehirn-Bild dehnen, um Container komplett zu füllen */
     .hero-brain {
         display: block !important;
         position: absolute !important;
@@ -496,7 +497,7 @@
         left: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
+        object-fit: fill !important; /* Dehnt das Bild */
         transform: rotate(-90deg) !important;
         opacity: 0.6 !important;
         z-index: 1 !important;
@@ -529,6 +530,11 @@
         height: 220px !important;
     }
 }
+
+
+
+
+
     
 
 
