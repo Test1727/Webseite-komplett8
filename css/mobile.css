@@ -475,13 +475,19 @@
 /* ========================================
    HOCHFORMAT FÜR TABLETS UND GROSSE GERÄTE
    ======================================== */
-@media (orientation: portrait) and (min-width: 769px) {
+    @media (orientation: portrait) and (min-width: 769px) {
     .hero {
+        margin-top: -80px !important; /* Je nach Bedarf anpassen */
         background-color: transparent !important;
-        border: 5px solid red !important;
+        background-image: url('images/8%20color.svg') !important;
+        background-size: cover !important;
+        background-position: center !important;
     }
     
-    /* Kopiere hier alle wichtigen Tablet-Styles */
+    .hero-brain {
+        display: none !important;
+    }
+    
     .hero .container {
         flex-direction: column !important;
         text-align: center !important;
@@ -499,13 +505,15 @@
         width: 220px !important;
         height: 220px !important;
     }
-    
-    .hero-brain {
-        opacity: 0.2 !important;
-        left: -50% !important;
-    }
 }
 
+
+
+
+
+
+
+   
 
 
 
