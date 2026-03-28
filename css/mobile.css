@@ -477,7 +477,7 @@
    ======================================== */
     @media (orientation: portrait) and (min-width: 769px) {
             .hero {
-        margin-top: -80px !important;
+        margin-top: -40px !important;
         background-color: transparent !important;
         position: relative !important;
         overflow: visible !important;
