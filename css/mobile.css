@@ -479,13 +479,16 @@
 /* ========================================
    HOCHFORMAT FÜR TABLETS UND GROSSE GERÄTE
    ======================================== */
-    @media (orientation: portrait) and (min-width: 769px) {
+@media (orientation: portrait) and (min-width: 769px) {
     .hero {
         background-color: #0f2a4a !important;
         background-image: none !important;
         position: relative !important;
         overflow: hidden !important;
-        min-height: 100vh !important;
+        min-height: 90vh !important; /* Höhe reduziert */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     
     .hero-brain {
@@ -500,13 +503,14 @@
         align-items: center !important;
         justify-content: center !important;
         text-align: center !important;
-        min-height: 100vh !important;
-        gap: 60px !important;
+        width: 100% !important;
+        gap: 80px !important; /* Größerer Abstand zwischen Bild und Text */
         padding: 0 20px !important;
     }
     
     .hero-content {
         order: 2 !important;
+        width: 100% !important;
     }
     
     .hero-image {
@@ -518,6 +522,8 @@
         height: 220px !important;
     }
 }
+
+
 
 
 
