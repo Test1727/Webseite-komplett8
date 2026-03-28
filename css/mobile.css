@@ -479,7 +479,6 @@
 /* ========================================
    HOCHFORMAT FÜR TABLETS UND GROSSE GERÄTE
    ======================================== */
-@media (orientation: portrait) and (min-width: 769px) {
     @media (orientation: portrait) and (min-width: 769px) {
     .hero {
         background-color: #0f2a4a !important;
