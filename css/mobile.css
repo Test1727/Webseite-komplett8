@@ -471,19 +471,21 @@
 }
 
 
-/* Große Tablets im Hochformat (ab 993px) */
+
+
+
 @media (min-width: 993px) and (orientation: portrait) {
     
     .hero {
+        margin-top: -100px; /* Negativer Wert schiebt nach oben */
         background-image: url('images/8%20color.svg');
         background-size: cover;
         background-position: center;
         background-color: transparent;
-        overflow: hidden;
     }
     
     .hero-brain {
-        display: none; /* Versteckt das separate Bild */
+        display: none;
     }
     
     .hero .container {
@@ -505,6 +507,13 @@
         height: 220px;
     }
 }
+
+
+
+
+
+
+
 
 
 
