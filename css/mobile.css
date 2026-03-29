@@ -533,17 +533,6 @@
         background-position: right 8px center !important;
     }
 
-
-
-
-
-
-        
-
-
-
-
-
     
     .hero {
         background-color: #0f2a4a !important;
@@ -621,8 +610,16 @@
 }
 
 
+/* ======================================== */
+/* 4. SMARTPHONE & SCHMALE FENSTER - HOCHFORMAT */
+/* ======================================== */
+    /* Greift bei:
+       - Alle Geräte mit Breite <= 768px
+       - UND Hochformat (Höhe > Breite)
+       - Typische Beispiele: Smartphones im Hochformat, schmale Tablet-Fenster im Hochformat
+       - Auch schmale Desktop-Fenster unter 769px im Hochformat
+    */
 
-/* Smartphones & schmale Fenster im Hochformat */
 @media (max-width: 768px) and (orientation: portrait) {
     
     /* === BASIS-TYPOGRAFIE === */
@@ -965,23 +962,14 @@
 
 
 
+/* ======================================== */
+/* 5. Smartphones & schmale Fenster (egal ob Hoch- oder Querformat) */
+/* ======================================== */
+    /* Greift für ALLE Geräte mit Breite ≤ 768px 
+       - unabhängig von der Orientierung (sowohl Hoch- als auch Querformat)
+       - Typische Beispiele: Smartphones, schmale Tablets, schmale Desktop-Fenster
+    */
 
-
-
-
-
-
-
-
-
-
-/* ========================================
-   SMARTPHONE OPTIMIERUNGEN (max-width: 768px)
-   ======================================== */
-
-
-
-/* Smartphones & schmale Fenster im Querformat */
 @media (max-width: 768px) {
     
     /* === BASIS-TYPOGRAFIE KOMPAKTER === */
