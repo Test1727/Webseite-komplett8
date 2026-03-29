@@ -1,4 +1,13 @@
-/* Querformat - */
+/* ======================================== */
+/* 2. TABLET-QUERFORMAT (klassische Tablets) */
+/* ======================================== */
+    /* Greift bei:
+       - Geräte mit Breite 769px bis 992px
+       - UND Querformat (Breite > Höhe)
+       - Typische Beispiele: iPad (10,2"), iPad Air, Samsung Galaxy Tab im Querformat
+       - Auch schmale Desktop-Fenster in dieser Breite
+    */
+/* ======================================== */
 @media (min-width: 769px) and (max-width: 992px) and (orientation: landscape){
     
     /* === TYPOGRAPHIE - FLUID === */
@@ -474,12 +483,15 @@
 
 
 
-
-
-
-/* ========================================
-   HOCHFORMAT FÜR TABLETS UND GROSSE GERÄTE
-   ======================================== */
+/* ======================================== */
+/* 3. TABLET-HOCHFORMAT & GROSSE HOCHFORMATE */
+/* ======================================== */
+    /* Greift bei:
+       - Alle Geräte mit Breite >= 769px
+       - UND Hochformat (Höhe > Breite)
+       - Typische Beispiele: iPad im Hochformat, große Tablets, Desktop-Monitore im Hochformat
+       - Achtung: Erfasst auch große Desktop-Monitore im Hochformat!
+*/ ======================================== */
     @media (orientation: portrait) and (min-width: 769px) {
     /* Header/Menü anpassen */
     header .container {
